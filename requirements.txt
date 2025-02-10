@@ -1,0 +1,8 @@
+ultralytics
+fiftyone
+pycocotools
+opencv-python
+numpy
+pandas
+torch
+opencv-python

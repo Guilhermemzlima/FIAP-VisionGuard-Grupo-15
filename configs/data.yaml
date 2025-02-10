@@ -1,0 +1,6 @@
+# configs/data.yaml
+train: ./coco_cutting_yolo_train/images
+val: ./coco_cutting_yolo_val/images  # Caso você também exporte um conjunto de validação
+
+nc: 2
+names: [ 'knife', 'scissors' ]
