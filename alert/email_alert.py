@@ -4,31 +4,35 @@ from email.message import EmailMessage
 import cv2
 import tempfile
 import os
+from dotenv import load_dotenv
+
+# Load environment variables from .env file
+load_dotenv()
 
 
 def send_email_alert(frame):
-    # Salva o frame em um arquivo temporário
+    # Save the frame to a temporary file
     with tempfile.NamedTemporaryFile(suffix=".jpg", delete=False) as tmp:
         image_path = tmp.name
     cv2.imwrite(image_path, frame)
 
-    # Configuração do e-mail
+    # Email configuration
     msg = EmailMessage()
     msg['Subject'] = "Alerta: Objeto Cortante Detectado"
-    msg['From'] = "starkgamerbr.bazinga@gmail.com"  # Atualize para o seu e-mail
-    msg['To'] = "guilherme.munhozlima@gmail.com"  # Atualize para o e-mail da central de segurança
+    msg['From'] = os.getenv("SMTP_USER")  # Update to use environment variable
+    msg['To'] = os.getenv("SMTP_SEND")  # Update to the security center email
     msg.set_content("Foi detectado um objeto cortante pela câmera de segurança. Verifique imediatamente.")
 
-    # Anexa a imagem
+    # Attach the image
     with open(image_path, 'rb') as f:
         file_data = f.read()
     msg.add_attachment(file_data, maintype='image', subtype='jpeg', filename='alert.jpg')
 
-    # Configuração do servidor SMTP (exemplo com Gmail)
+    # SMTP server configuration (example with Gmail)
     smtp_server = "smtp.gmail.com"
     smtp_port = 465
-    smtp_user = "starkgamerbr.bazinga@gmail.com"  # Atualize
-    smtp_password = "ofhp abcj iqyu qwfk"  # Atualize (considere usar variáveis de ambiente ou outro método seguro)
+    smtp_user = os.getenv("SMTP_USER")  # Update to use environment variable
+    smtp_password = os.getenv("SMTP_PASSWORD")  # Update to use environment variable
 
     try:
         with smtplib.SMTP_SSL(smtp_server, smtp_port) as smtp:
