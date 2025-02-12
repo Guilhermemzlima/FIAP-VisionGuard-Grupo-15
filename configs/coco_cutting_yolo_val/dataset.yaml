@@ -1,5 +1,5 @@
 names:
   0: knife
   1: scissors
-path: /home/guilhermemunhoz/Workspace/Facul/FIAP-VisionGuard-Grupo-15/configs/coco_cutting_yolo_val
+path: /home/guilhermemunhoz/Workspace/Facul/github/FIAP-VisionGuard-Grupo-15/configs/coco_cutting_yolo_val
 val: ./images/val/

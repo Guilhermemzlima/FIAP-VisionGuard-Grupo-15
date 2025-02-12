@@ -6,7 +6,7 @@ from ultralytics import YOLO
 
 def train_yolov8():
     # Caminho absoluto para o arquivo data.yaml
-    data_config = os.path.abspath(os.path.join(".", "configs", "data.yaml"))
+    data_config = os.path.abspath(os.path.join("..", "configs", "data.yaml"))
 
     # Escolha do modelo pré-treinado; aqui usamos a variante "nano"
     # Outras opções: yolov8s.pt, yolov8m.pt, yolov8l.pt, etc.

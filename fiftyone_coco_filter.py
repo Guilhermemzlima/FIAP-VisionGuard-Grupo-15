@@ -10,7 +10,7 @@ train_dataset = foz.load_zoo_dataset(
     split="train",
     label_types=["detections"],
     classes=classes_of_interest,
-    max_samples=500,  # Optional: limit the number of samples for testing
+    max_samples=2000,  # Optional: limit the number of samples for testing
 )
 
 # Load the COCO 2017 validation dataset
@@ -19,7 +19,7 @@ val_dataset = foz.load_zoo_dataset(
     split="validation",
     label_types=["detections"],
     classes=classes_of_interest,
-    max_samples=100,  # Optional: limit the number of samples for testing
+    max_samples=500,  # Optional: limit the number of samples for testing
 )
 
 # Export the training dataset to YOLO format
