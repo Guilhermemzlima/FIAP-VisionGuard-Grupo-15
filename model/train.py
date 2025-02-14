@@ -10,7 +10,7 @@ def train_yolov8():
 
     # Escolha do modelo pré-treinado; aqui usamos a variante "nano"
     # Outras opções: yolov8s.pt, yolov8m.pt, yolov8l.pt, etc.
-    model = YOLO("yolov8n.pt")
+    model = YOLO("yolo11l.pt")
 
     # Inicia o treinamento
     model.train(
@@ -18,8 +18,7 @@ def train_yolov8():
         epochs=50,
         imgsz=640,
         batch=8,
-        device=0,
-        half=True,
+        device=0
     )
 
 

@@ -7,3 +7,4 @@ pandas
 torch
 opencv-python
 python-dotenv
+kagglehub

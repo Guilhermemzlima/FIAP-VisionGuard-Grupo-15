@@ -1,6 +1,13 @@
 # configs/data.yaml
-train: ./coco_cutting_yolo_train/images
-val: ./coco_cutting_yolo_val/images  # Caso você também exporte um conjunto de validação
+train: C:\Users\guilh\.cache\kagglehub\datasets\kruthisb999\guns-and-knifes-detection-in-cctv-videos\versions\1\combined_gunsnknifes\train  # Caminho para o conjunto de treinamento
+val:  C:\Users\guilh\.cache\kagglehub\datasets\kruthisb999\guns-and-knifes-detection-in-cctv-videos\versions\1\combined_gunsnknifes\val
+test: C:\Users\guilh\.cache\kagglehub\datasets\kruthisb999\guns-and-knifes-detection-in-cctv-videos\versions\1\combined_gunsnknifes\test
+
+
+## configs/data.yaml
+#train: ./coco_cutting_yolo_train/images
+#val: ./coco_cutting_yolo_val/images  #
+#
 
 nc: 2
 names: [ 'knife', 'scissors' ]
