@@ -1,3 +1,5 @@
+import os
+
 import cv2
 from ultralytics import YOLO
 from alert.email_alert import send_email_alert
@@ -5,7 +7,7 @@ from alert.email_alert import send_email_alert
 # Define the confidence threshold
 CONFIDENCE_THRESHOLD = 0.5
 # Define the classes that should trigger an alert
-ALERT_CLASSES = ['knife', 'pistol']
+ALERT_CLASSES = ['knife', 'pistol','scissors']
 # Flag to track if an email has been sent
 email_sent = False
 
@@ -46,10 +48,10 @@ def process_frame(frame, model):
 
 def main():
     # Path to the custom trained model (adjust as necessary)
-    model_path = "./yolov8m.pt"
+    model_path = "./yolo11l.pt"
     model = YOLO(model_path)
 
-    cap = cv2.VideoCapture('/F:/Faculdade/video3.mp4')  # Open the webcam. To use a video, replace 0 with the file path.
+    cap = cv2.VideoCapture(os.getenv("VIDEO_PATH") )
 
     while True:
         ret, frame = cap.read()
