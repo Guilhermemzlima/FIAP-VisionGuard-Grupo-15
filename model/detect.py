@@ -1,4 +1,3 @@
-# model/detect.py
 import cv2
 from ultralytics import YOLO
 from alert.email_alert import send_email_alert
@@ -6,10 +5,12 @@ from alert.email_alert import send_email_alert
 # Define the confidence threshold
 CONFIDENCE_THRESHOLD = 0.5
 # Define the classes that should trigger an alert
-ALERT_CLASSES = [ 'knife', 'pistol' ]
-
+ALERT_CLASSES = ['knife', 'pistol']
+# Flag to track if an email has been sent
+email_sent = False
 
 def process_frame(frame, model):
+    global email_sent
     detections_made = False
 
     # Perform prediction with YOLOv8
@@ -38,17 +39,17 @@ def process_frame(frame, model):
                     # Check if the detected class is in the alert classes
                     if name in ALERT_CLASSES:
                         detections_made = True
+                        if not email_sent:
+                            send_email_alert(frame)
+                            email_sent = True
     return frame, detections_made
 
-
 def main():
-    # Caminho para o modelo treinado customizado (ajuste conforme necessário)
-    # model_path = "../yolov8/runs/detect/train/weights/best.pt"
+    # Path to the custom trained model (adjust as necessary)
     model_path = "./yolov8m.pt"
     model = YOLO(model_path)
 
-    cap = cv2.VideoCapture(
-        '/F:\Faculdade/video3.mp4')  # Abre a webcam. Para usar um vídeo, substitua o 0 pelo caminho do arquivo.
+    cap = cv2.VideoCapture('/F:/Faculdade/video3.mp4')  # Open the webcam. To use a video, replace 0 with the file path.
 
     while True:
         ret, frame = cap.read()
@@ -57,17 +58,12 @@ def main():
 
         processed_frame, alert_triggered = process_frame(frame, model)
 
-        if alert_triggered:
-            # Envia alerta via e-mail (implemente lógica para evitar envios repetidos se necessário)
-            send_email_alert(processed_frame)
-
         cv2.imshow("YOLOv8 - Detecção de Objetos Cortantes", processed_frame)
         if cv2.waitKey(1) & 0xFF == ord('q'):
             break
 
     cap.release()
     cv2.destroyAllWindows()
-
 
 if __name__ == "__main__":
     main()
