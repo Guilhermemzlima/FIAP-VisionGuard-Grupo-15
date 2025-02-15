@@ -37,6 +37,7 @@ Esse projeto realiza a análise de um vídeo buscando identificar objetos cortan
 
 - Python 3.x
 - Bibliotecas listadas em `requirements.txt`
+- Atenção, versão do torch pode precisar ser alterada de acordo com a versão do nvidia cuda instalada no dispositivo que está rodando o projeto
 
 ## Instalação
 
@@ -54,6 +55,13 @@ Esse projeto realiza a análise de um vídeo buscando identificar objetos cortan
     ```
 
 ## Como Executar
+
+## Dataset
+
+O dataset utilizado pode ser obtido executando o arquivo [fiftyone_coco_filter.py](fiftyone_coco_filter.py).
+
+ - Também realizamos testes bem-sucedidos com o dataset que pode ser baixado pelo arquivo [kaggle.py](kaggle.py) (não foi o usado no exemplo).
+
 
 ### Treinamento do Modelo de Anomalia
 
