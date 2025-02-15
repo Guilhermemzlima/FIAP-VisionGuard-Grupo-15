@@ -105,7 +105,7 @@ python model/detect.py
 Assim, o e-mail configurado no .env deve receber um email com a imagem do objeto detectado e um texto avisando:
 -  "Foi detectado um objeto cortante pela câmera de segurança. Verifique imediatamente."
 - Estrutura dos Módulos
-- model/train.py: Script para treinar o modelo YOLOv8.
+- model/train.py: Script para treinar o modelo YOLO.
 - model/detect.py: Script para detectar objetos cortantes em um vídeo e enviar alertas por e-mail.
 - alert/email_alert.py: Função para enviar alertas por e-mail.
 - configs/data.yaml: Configuração do dataset para treinamento.

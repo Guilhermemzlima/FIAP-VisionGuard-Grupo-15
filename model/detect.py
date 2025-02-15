@@ -60,7 +60,7 @@ def main():
 
         processed_frame, alert_triggered = process_frame(frame, model)
 
-        cv2.imshow("YOLOv8 - Detecção de Objetos Cortantes", processed_frame)
+        cv2.imshow("YOLO - Detecção de Objetos Cortantes", processed_frame)
         if cv2.waitKey(1) & 0xFF == ord('q'):
             break
 
